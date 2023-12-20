@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:56:47 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/19 21:55:26 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:46:33 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*keep_b(char *buf)
 		free(buf);
 		return(NULL);
 	}
-	str = (char *)ft_calloc(ft_strlen(buf) - i + 1, sizeof(char));
+	str = (char *)malloc(ft_strlen(buf) - i + 2);
 	if (!str)
 		return(NULL);
 	i++;
@@ -37,6 +37,7 @@ static char	*keep_b(char *buf)
 		i++;
 		j++;
 	}
+	str[j] = '\0';
 	free(buf);
 	return(str);
 }
@@ -46,12 +47,14 @@ static char	*final_r(char *buf)
 	char	*str;
 	int		i;
 
-	i = 0;
-	if (!buf[i])
+	if (!buf[0])
 		return(NULL);
+	if (!ft_strchr(buf, '\n'))
+		return(ft_strdup(buf));
+	i = 0;
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	str = (char *)ft_calloc(i + 2, sizeof(char));
+	str = (char *)malloc(i + 2);
 	if (!str)
 		return(NULL);
 	i = 0;
@@ -61,7 +64,10 @@ static char	*final_r(char *buf)
 		i++;
 	}
 	if (buf[i] && buf[i] == '\n')
+	{
 		str[i] = '\n';
+		str[i+1] = '\0';
+	}
 	return(str);
 }
 
@@ -85,15 +91,16 @@ static char	*read_fd(int fd, char *buffer)
 		buffer = (char *)malloc(1);
 		buffer[0] = '\0';
 	}
-	tmp = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	tmp = (char *)malloc(BUFFER_SIZE + 1);
 	while (br > 0)
 	{
 		br = read(fd, tmp, BUFFER_SIZE);
-		if (br < 0)
+		if (br == -1)
 		{
 			free(tmp);
 			return(NULL);
 		}
+		tmp[br] = '\0';
 		buffer = joinb(buffer, tmp);
 		if (ft_strchr(tmp, '\n'))
 			break;
