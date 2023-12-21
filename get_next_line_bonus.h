@@ -6,15 +6,15 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:16:05 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/21 11:36:52 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:46:56 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 75
+#  define BUFFER_SIZE 42
 # endif
 
 # include <unistd.h>
