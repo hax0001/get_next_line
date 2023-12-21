@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:50:14 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/20 12:50:31 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:57:08 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,86 @@
 
 int main()
 {
-    int fd = open("haax", O_RDONLY);
-    char    *str = get_next_line(fd);
+    int a = open("1", O_RDONLY);
+    char    *str = get_next_line(a);
     if (str == NULL)
-        printf("11\n");
+        printf("nuul\n");
     else
         printf("%s\n",str);
-    char    *st = get_next_line(fd);
+    free(str);
+    int b = open("2", O_RDONLY);
+    char    *st = get_next_line(b);
     if (st == NULL)
-        printf("22\n");
+        printf("nuull\n");
     else
         printf("%s\n",st);
-    char    *s = get_next_line(fd);
+    free(st);
+    int c = open("3", O_RDONLY);
+    char    *s = get_next_line(c);
     if (s == NULL)
-        printf("33\n");
+        printf("nuull\n");
     else
         printf("%s\n",s);
-    char    *tr = get_next_line(fd);
-    if (tr == NULL)
-        printf("44\n");
+    free(s);
+
+
+    str = get_next_line(a);
+    if (str == NULL)
+        printf("null\n");
     else
-        printf("%s\n",tr);
-    char    *r = get_next_line(fd);
-    if (r == NULL)
-        printf("55\n");
+        printf("%s\n",str);
+    free(str);
+    st = get_next_line(b);
+    if (st == NULL)
+        printf("nuull\n");
     else
-        printf("%s\n",r);
+        printf("%s\n",st);
+    free(st);
+    s = get_next_line(c);
+    if (s == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",s);
+    free(s);
+
+
+    str = get_next_line(a);
+    if (str == NULL)
+        printf("nuul\n");
+    else
+        printf("%s\n",str);
+    free(str);
+    st = get_next_line(b);
+    if (st == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",st);
+    free(st);
+    s = get_next_line(c);
+    if (s == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",s);
+    free(s);
+
+
+
+    str = get_next_line(a);
+    if (str == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",str);
+    free(str);
+    st = get_next_line(b);
+    if (st == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",st);
+    free(st);
+    s = get_next_line(c);
+    if (s == NULL)
+        printf("nuull\n");
+    else
+        printf("%s\n",s);
+    free(s);
 }

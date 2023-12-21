@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 17:56:47 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/21 09:59:59 by nait-bou         ###   ########.fr       */
+/*   Created: 2023/12/21 11:11:51 by nait-bou          #+#    #+#             */
+/*   Updated: 2023/12/21 11:59:29 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,15 @@ static char	*read_fd(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	*buf[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buf = read_fd(fd, buf);
-	if (!buf)
+	buf[fd] = read_fd(fd, buf[fd]);
+	if (!buf[fd])
 		return (NULL);
-	line = final_r(buf);
-	buf = keep_b(buf);
+	line = final_r(buf[fd]);
+	buf[fd] = keep_b(buf[fd]);
 	return (line);
 }
