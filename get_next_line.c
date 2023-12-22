@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:56:47 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/21 09:59:59 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:13:07 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static char	*keep_b(char *buf)
 		j++;
 	}
 	str[j] = '\0';
-	free(buf);
-	return (str);
+	return (free(buf), buf = NULL, str);
 }
 
 static char	*final_r(char *buf)
@@ -90,22 +89,18 @@ static char	*read_fd(int fd, char *buffer)
 		buffer = (char *)malloc(1);
 		buffer[0] = '\0';
 	}
-	tmp = (char *)malloc(BUFFER_SIZE + 1);
+	tmp = (char *)malloc((size_t)BUFFER_SIZE + 1);
 	while (br > 0)
 	{
 		br = read(fd, tmp, BUFFER_SIZE);
 		if (br == -1)
-		{
-			free(tmp);
-			return (NULL);
-		}
+			return (free(tmp), NULL);
 		tmp[br] = '\0';
 		buffer = joinb(buffer, tmp);
 		if (ft_strchr(tmp, '\n'))
 			break ;
 	}
-	free(tmp);
-	return (buffer);
+	return (free(tmp), buffer);
 }
 
 char	*get_next_line(int fd)
@@ -114,7 +109,7 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
+		return (free(buf), buf = NULL, NULL);
 	buf = read_fd(fd, buf);
 	if (!buf)
 		return (NULL);

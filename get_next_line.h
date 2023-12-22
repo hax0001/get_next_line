@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:26:30 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/21 11:05:12 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/22 19:51:24 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 10
 # endif
 
 # include <unistd.h>
