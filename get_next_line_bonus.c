@@ -6,11 +6,11 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:11:51 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/23 10:06:03 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/25 18:46:50 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*keep_b(char *buf)
 {
@@ -27,7 +27,7 @@ static char	*keep_b(char *buf)
 		free(buf);
 		return (NULL);
 	}
-	str = (char *)malloc(ft_strlen(buf) - i++ + 2);
+	str = (char *)malloc(ft_strlen(buf) - i++ + 1);
 	if (!str)
 		return (NULL);
 	while (buf[i])
