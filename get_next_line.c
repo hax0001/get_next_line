@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:56:47 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/25 18:46:37 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/25 19:09:57 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 	static char	*buf;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 1024)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (free(buf), buf = NULL, NULL);
 	buf = read_fd(fd, buf);
 	if (!buf)
