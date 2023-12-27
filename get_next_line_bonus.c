@@ -113,7 +113,7 @@ char	*get_next_line(int fd)
 	static char	*buf[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1 || fd > 1024)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (free(buf[fd]), buf[fd] = NULL, NULL);
 	buf[fd] = read_fd(fd, buf[fd]);
 	if (!buf[fd])
