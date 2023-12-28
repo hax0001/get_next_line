@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 17:56:47 by nait-bou          #+#    #+#             */
-/*   Updated: 2023/12/28 16:59:05 by nait-bou         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:44:49 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static char	*read_fd(int fd, char *buffer)
 	{
 		br = read(fd, tmp, BUFFER_SIZE);
 		if (br == -1)
-			return (free(tmp), NULL);
+			return (free(buffer), free(tmp), NULL);
 		tmp[br] = '\0';
 		buffer = joinb(buffer, tmp);
 		if (ft_strchr(tmp, '\n'))
